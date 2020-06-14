@@ -65,7 +65,7 @@ type Directives struct {
 	DefaultValue string
 }
 
-// Check verifies if tow or more environment variables are available and valued
+// CheckMany verifies if tow or more environment variables are available and valued
 func CheckMany(prefix string, directives []Directives, logPrint bool) error {
 	for _, d := range directives {
 		if err := Check(prefix, d.Name, d.DefaultValue, d.Required, logPrint); err != nil {
@@ -77,7 +77,7 @@ func CheckMany(prefix string, directives []Directives, logPrint bool) error {
 }
 
 // Str returns the env var value as string
-func String(prefix, key, defaultValue string) string {
+func Str(prefix, key, defaultValue string) string {
 	key = keyNormalize(prefix, key)
 
 	if os.Getenv(key) != `` {
@@ -165,7 +165,7 @@ func Float(prefix, key string, defaultValue float64) float64 {
 }
 
 // Bool returns the env var value as boolean
-func Boolloat(prefix, key string, defaultValue bool) bool {
+func Bool(prefix, key string, defaultValue bool) bool {
 	key = keyNormalize(prefix, key)
 
 	if os.Getenv(key) != `` {
